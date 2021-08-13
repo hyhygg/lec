@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax GET</title>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script>
+	function reqList0(){
+		$.get("list.do?pageno=2&pagesize=10",
+			function(data){
+			$("#resp").html(data);
+		}
+	}
+	
+	function reqList1(){
+		$.get({
+			url:"list.do",
+			type:"GET",
+			data:{pageno:2, pagesize:10},
+			success:function(data){
+				$("#resp").html(data);
+			}
+		});
+	}
+	function delList(){
+		$("#resp").html("");
+	}
+
+</script>
+</head>
+<body>
+	<button type="button" onclick="reqList0();">요청0</button>
+	<button type="button" onclick="reqList1();">요청1</button>
+	<button type="button" onclick="delList();">삭제</button>
+	<p id="resp"></p>
+</body>
+</html>
